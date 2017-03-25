@@ -42,6 +42,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     self.phoneNoInfoLabel.isHidden = true
     self.phoneNoField.becomeFirstResponder()
     
+    /* for hiding keyboard */
+    self.hideKeyboardWhenTappedAround()
+    
     let color = UIColor.lightGray
     self.phoneNoField.attributedPlaceholder = NSAttributedString(string: "Please enter an emergency contact", attributes: [NSForegroundColorAttributeName: color])
     
@@ -129,7 +132,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     return cell
   }
-  
   
   // checkmark effect
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
