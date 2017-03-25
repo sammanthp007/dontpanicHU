@@ -233,7 +233,7 @@ extension ViewController {
             self.backgroundImage.image = UIImage(named: "Background_Blue")
             self.navigationItem.title = "Everything will be okay..."
             self.isDataCollected = false
-            self.cancelButton.isHidden = false
+            //self.cancelButton.isHidden = false
             //self.notifyButton.isHidden = false
 
             self.cancelButton.fadeOut()
