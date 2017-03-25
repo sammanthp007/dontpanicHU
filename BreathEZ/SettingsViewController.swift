@@ -25,6 +25,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
   
   
   override func viewWillAppear(_ animated: Bool) {
+    print(docName)
+    
     if let phoneNo = settingsDefaults.value(forKey: "phoneNo") as? String {
       self.phoneNoField.text = phoneNo
       self.phoneNoInfoLabel.isHidden = false
@@ -40,7 +42,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         self.emergencyContactField.text = emergencyName
         
       } else {
-        self.emergencyContactField.attributedPlaceholder = NSAttributedString(string: "Contact Name", attributes: [NSForegroundColorAttributeName : UIColor.white])
+        self.emergencyContactField.attributedPlaceholder = NSAttributedString(string: "Enter Contact Name", attributes: [NSForegroundColorAttributeName : UIColor.white])
       }
       
     } else if (isSelected) {
@@ -85,7 +87,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
   
   func networkRequest() {
     // Doctor Info Network Request
-    
     
     let apiKey = "c31447938384aaa66eb7107ab84dd8fd"
     let practiceType = "psychiatrist"
@@ -161,10 +162,12 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.accessoryType = .checkmark
         cell.tintColor = UIColor .blue
         self.phoneNoField.text = self.selectedPhone
+        self.emergencyContactField.text = docName
         isSelected = true
       } else {
         cell.accessoryType = .none
         self.phoneNoField.text = ""
+        self.emergencyContactField.text = ""
         isSelected = false
       }
     }
