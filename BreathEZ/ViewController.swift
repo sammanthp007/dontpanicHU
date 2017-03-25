@@ -68,7 +68,13 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
     
     @IBAction func notifyButtonPressed(_ sender: AnyObject) {
         let formatedNumber = self.phone.components(separatedBy: NSCharacterSet.decimalDigits.inverted).joined(separator: "")
+      if let emergencyName = dontPanicSettings.value(forKey: "emergencyContactName") as? String {
+        print("calling \(emergencyName)")
+        
+      } else {
         print("calling \(formatedNumber)")
+      }
+      
         open(scheme: "telprompt://\(formatedNumber)")
 
     }

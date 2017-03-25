@@ -265,6 +265,16 @@
                                 <color key="textColor" red="0.89179889900310882" green="0.89179889900310882" blue="0.89179889900310882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hBc-Ie-ZxD">
+                                <rect key="frame" x="40" y="160" width="297" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="onSetEmergencyContactName:" destination="IfU-pa-Ub2" eventType="editingDidEnd" id="CsT-u3-glu"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -297,6 +307,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="emergencyContactField" destination="hBc-Ie-ZxD" id="TaG-5r-MF7"/>
                         <outlet property="phoneNoField" destination="kqe-R4-HiO" id="p41-cJ-b3T"/>
                         <outlet property="phoneNoInfoLabel" destination="Zkt-0l-ztp" id="e9d-ZB-4wc"/>
                         <outlet property="tableView" destination="rsY-rc-ztk" id="gDf-e2-arC"/>

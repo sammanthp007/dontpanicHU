@@ -15,11 +15,13 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
   @IBOutlet weak var phoneNoField: UITextField!
   @IBOutlet weak var phoneNoInfoLabel: UILabel!
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var emergencyContactField: UITextField!
   
   var settingsDefaults = UserDefaults.standard
   var isSelected: Bool = false
   var practiceData: NSDictionary? = nil
   var selectedPhone: String = ""
+  var docName: String = ""
   
   
   override func viewWillAppear(_ animated: Bool) {
@@ -32,6 +34,19 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
       let color = UIColor.lightGray
       self.phoneNoField.attributedPlaceholder = NSAttributedString(string: "Please enter an emergency contact no.", attributes: [NSForegroundColorAttributeName: color])
     }
+    
+    if let emergencyName = settingsDefaults.value(forKey: "emergencyContactName") as? String {
+      if emergencyName != "" {
+        self.emergencyContactField.text = emergencyName
+      } else if (isSelected) {
+        self.emergencyContactField.text = docName
+      }
+      else {
+        //let color = UIColor.lightGray
+        self.emergencyContactField.attributedPlaceholder = NSAttributedString(string: "Enter Emergency Contact Name", attributes: [NSForegroundColorAttributeName : UIColor.lightGray])
+      }
+    }
+    
   }
   
   override func viewDidLoad() {
@@ -41,6 +56,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     self.phoneNoInfoLabel.isHidden = true
     self.phoneNoField.becomeFirstResponder()
+    self.emergencyContactField.borderStyle = UITextBorderStyle.none
     
     /* for hiding keyboard */
     self.hideKeyboardWhenTappedAround()
@@ -60,6 +76,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     networkRequest()
     
+  }
+  
+  @IBAction func onSetEmergencyContactName(_ sender: UITextField) {
+    settingsDefaults.set(self.emergencyContactField.text, forKey: "emergencyContactName")
   }
   
   
@@ -115,8 +135,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             if let docProfile = practice["profile"] as? NSDictionary {
               let fname = docProfile["first_name"] as! String
               let lname = docProfile["last_name"] as! String
+              self.docName = "Dr. \(fname) \(lname)"
               
-              cell.practiceNameLabel.text = "Dr. \(fname) \(lname)"
+              cell.practiceNameLabel.text = self.docName
               cell.descriptionLabel.text = docProfile["bio"] as? String
               
               let imageUrl = NSURL(string: docProfile["image_url"]! as! String)
