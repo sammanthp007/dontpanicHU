@@ -34,7 +34,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
     var journalData: [BreatheData] = []
   
     var dontPanicSettings = UserDefaults.standard
-    var phone = "4692659694"  // Default
+    var phone = "2022129087"  // Default
 
   
     override func viewDidLoad() {
@@ -114,6 +114,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
 // Recording Functionality
 extension ViewController {
     func getPermissions() {
+        /* Initialize the audio driver */
         recordingSession = AVAudioSession.sharedInstance()
         
         do {
@@ -122,18 +123,22 @@ extension ViewController {
             recordingSession.requestRecordPermission() { [unowned self] allowed in
                 DispatchQueue.main.async {
                     if allowed {
+                        /* if permission is set and audio driver is ready, RECORD */
                         self.startRecording()
                     } else {
                         // failed to record!
+                        print("could not record")
                     }
                 }
             }
         } catch {
             // failed to record!
+            print("Failed to record")
         }
     }
     
     func startRecording() {
+        /* initialize the memory to store the recording in */
         let audioFilename = getDocumentsDirectory().appendingPathComponent("recording.m4a")
         
         let settings = [
@@ -143,24 +148,33 @@ extension ViewController {
             AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
         ]
         
+        /* RECORD here */
         do {
             audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
             audioRecorder.delegate = self
             audioRecorder.isMeteringEnabled = true
             audioRecorder.record()
+            
+            /* sends the message checkAudioVolume at 0.04 second to self.. will repeat until we explicitely invalidate */
             self.checkTimer = Timer.scheduledTimer(timeInterval: 0.04, target: self, selector: #selector(self.checkAudioVolume), userInfo: nil, repeats: true)
             
         } catch {
             //finishRecording(success: false)
+            print("Finished Recording")
         }
     }
     
     func checkAudioVolume() {
+        /* Refreshes the average and peak power values for all channels of an audio recorder. */
         audioRecorder.updateMeters()
+        
         if isDataCollected {
+            /* if there is breathing */
             if audioRecorder.averagePower(forChannel: 0) > -3.5 {
+                /* we are breathing, initially false */
                 if !self.isBreathingOut {
                     self.isBreathingOut = true
+                    /* initially nil date since we have not set the start of recording */
                     if timeAtPress != nil{
                         endTimer()
                     }
@@ -186,6 +200,7 @@ extension ViewController {
 // Timer Functionality
 extension ViewController {
     func startTimer() {
+        /* initialize the recording start time */
         timeAtPress = Date()
     }
     
