@@ -38,16 +38,16 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     if let emergencyName = settingsDefaults.value(forKey: "emergencyContactName") as? String {
       if emergencyName != "" {
         self.emergencyContactField.text = emergencyName
-      } else if (isSelected) {
-        self.emergencyContactField.text = docName
+        
+      } else {
+        self.emergencyContactField.attributedPlaceholder = NSAttributedString(string: "Contact Name", attributes: [NSForegroundColorAttributeName : UIColor.white])
       }
-      else {
-        //let color = UIColor.lightGray
-        self.emergencyContactField.attributedPlaceholder = NSAttributedString(string: "Enter Emergency Contact Name", attributes: [NSForegroundColorAttributeName : UIColor.lightGray])
-      }
+      
+    } else if (isSelected) {
+      self.emergencyContactField.text = docName
     }
-    
   }
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()
