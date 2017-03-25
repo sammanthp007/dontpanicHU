@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  BreathEZ
 //
-//  Created by Wilson Ding on 10/15/16.
-//  Copyright © 2016 Wilson Ding. All rights reserved.
+//  Modified by Tunscopi on 3/25/17.
+//  Copyright © 2016 dontpanicHU. All rights reserved.
 //
 
 import UIKit
@@ -32,12 +32,18 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
     var intervalData: Double!
     
     var journalData: [BreatheData] = []
-    
-    var phone = "4692659694"
+  
+    var dontPanicSettings = UserDefaults.standard
+    var phone = "4692659694"  // Default
 
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      
+      if let phoneNo = dontPanicSettings.value(forKey: "phoneNo") as? String {
+            self.phone = phoneNo
+      }
+      
         navigationController?.navigationBar.barTintColor = colorWithHexString(hex: "011A46")
         
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
@@ -63,9 +69,8 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
     @IBAction func notifyButtonPressed(_ sender: AnyObject) {
         let formatedNumber = self.phone.components(separatedBy: NSCharacterSet.decimalDigits.inverted).joined(separator: "")
         print("calling \(formatedNumber)")
-        let phoneUrl = "tel://\(formatedNumber)"
-        let url:URL = URL(string: phoneUrl)!
-        UIApplication.shared.openURL(url)
+        open(scheme: "telprompt://\(formatedNumber)")
+
     }
 
     @IBAction func cancelButtonPressed(_ sender: AnyObject) {
@@ -80,6 +85,20 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         self.instructionLabel.isHidden = false
     }
 
+  
+  func open(scheme: String) {
+    if let url = URL(string: scheme) {
+      if #available(iOS 10, *) {
+        UIApplication.shared.open(url, options: [:], completionHandler: {(success) in print("Open \(scheme): \(success)")
+        })
+      } else {
+        let success = UIApplication.shared.openURL(url)
+        print("Open \(scheme): \(success)")
+      }
+    }
+  }
+  
+  
     // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
