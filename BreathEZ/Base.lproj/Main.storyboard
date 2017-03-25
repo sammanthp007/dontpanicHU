@@ -25,7 +25,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background_Blue" translatesAutoresizingMaskIntoConstraints="NO" id="vaw-YX-EyE">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serene" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpt-7m-AyR">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HUSerene" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpt-7m-AyR">
                                 <rect key="frame" x="16" y="72" width="343" height="92"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="72"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -130,7 +130,7 @@
             </objects>
             <point key="canvasLocation" x="1300" y="-453.82308845577217"/>
         </scene>
-        <!--Title-->
+        <!--History-->
         <scene sceneID="ACf-T4-XSe">
             <objects>
                 <tableViewController id="kNx-MY-QiU" customClass="JournalTableViewController" customModule="BreathEZ" customModuleProvider="target" sceneMemberID="viewController">
@@ -170,7 +170,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Tracker" image="contact-book" id="ucu-ro-ev8"/>
-                    <navigationItem key="navigationItem" title="Title" id="vmr-hU-EiW"/>
+                    <navigationItem key="navigationItem" title="History" id="vmr-hU-EiW"/>
                     <connections>
                         <outlet property="journalTableView" destination="E77-Q5-2DV" id="cJQ-Zy-dzM"/>
                     </connections>
