@@ -6,5 +6,7 @@ target 'BreathEZ' do
   use_frameworks!
 
   # Pods for BreathEZ
+  pod 'AFNetworking', '~> 2.0'
+  pod 'MBProgressHUD', '~> 0.9.1'
 
 end

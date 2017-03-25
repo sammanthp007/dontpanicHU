@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		13D7C2301E86430C00E437C4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D7C22F1E86430C00E437C4 /* SettingsViewController.swift */; };
+		13E007BC1E865E8F00693F69 /* PracticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E007BB1E865E8F00693F69 /* PracticeCell.swift */; };
 		ACABF932D5B41B9CD2B77F6D /* Pods_BreathEZ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72DA3B92AB514B80F2ACEF2B /* Pods_BreathEZ.framework */; };
 		C87507171DB2093700BB87A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87507161DB2093700BB87A8 /* AppDelegate.swift */; };
 		C87507191DB2093700BB87A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87507181DB2093700BB87A8 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		13D7C22F1E86430C00E437C4 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		13E007BB1E865E8F00693F69 /* PracticeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PracticeCell.swift; sourceTree = "<group>"; };
 		72DA3B92AB514B80F2ACEF2B /* Pods_BreathEZ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BreathEZ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		884DDF9722146566CAACEB01 /* Pods-BreathEZ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreathEZ.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BreathEZ/Pods-BreathEZ.debug.xcconfig"; sourceTree = "<group>"; };
 		C87507131DB2093700BB87A8 /* BreathEZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreathEZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +48,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13E007B81E865E6100693F69 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C87507181DB2093700BB87A8 /* ViewController.swift */,
+				C88FB7981DB2AA9A001DC246 /* JournalTableViewController.swift */,
+				13D7C22F1E86430C00E437C4 /* SettingsViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		13E007B91E865E6C00693F69 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C88FB79A1DB2AC58001DC246 /* BreatheData.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		13E007BA1E865E7400693F69 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				13E007BB1E865E8F00693F69 /* PracticeCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		26494AE888C76451AA6B3822 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -84,15 +112,14 @@
 		C87507151DB2093700BB87A8 /* BreathEZ */ = {
 			isa = PBXGroup;
 			children = (
+				13E007BA1E865E7400693F69 /* Views */,
 				C87507161DB2093700BB87A8 /* AppDelegate.swift */,
-				C88FB79A1DB2AC58001DC246 /* BreatheData.swift */,
-				C87507181DB2093700BB87A8 /* ViewController.swift */,
-				C88FB7981DB2AA9A001DC246 /* JournalTableViewController.swift */,
+				13E007B91E865E6C00693F69 /* Model */,
+				13E007B81E865E6100693F69 /* View Controllers */,
 				C875071A1DB2093700BB87A8 /* Main.storyboard */,
 				C875071D1DB2093700BB87A8 /* Assets.xcassets */,
 				C875071F1DB2093700BB87A8 /* LaunchScreen.storyboard */,
 				C87507221DB2093700BB87A8 /* Info.plist */,
-				13D7C22F1E86430C00E437C4 /* SettingsViewController.swift */,
 			);
 			path = BreathEZ;
 			sourceTree = "<group>";
@@ -221,6 +248,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13E007BC1E865E8F00693F69 /* PracticeCell.swift in Sources */,
 				C87507191DB2093700BB87A8 /* ViewController.swift in Sources */,
 				C88FB79B1DB2AC58001DC246 /* BreatheData.swift in Sources */,
 				C88FB7991DB2AA9A001DC246 /* JournalTableViewController.swift in Sources */,
