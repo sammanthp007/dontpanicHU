@@ -40,9 +40,6 @@
                                 <state key="normal" title="Notify My Contact">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="notifyButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="okn-Zv-0Is"/>
-                                </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UG6-fI-w9H">
                                 <rect key="frame" x="16" y="597" width="88" height="64"/>

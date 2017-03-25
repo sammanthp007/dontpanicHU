@@ -34,7 +34,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
     var journalData: [BreatheData] = []
   
     var dontPanicSettings = UserDefaults.standard
-    var phone = "2022129087"  // Default
+    var phone = "2028151555"  // Default
 
   
     override func viewDidLoad() {
@@ -66,7 +66,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         getPermissions()
     }
     
-    @IBAction func notifyButtonPressed(_ sender: AnyObject) {
+    func notifyButtonPressed() {
         let formatedNumber = self.phone.components(separatedBy: NSCharacterSet.decimalDigits.inverted).joined(separator: "")
       if let emergencyName = dontPanicSettings.value(forKey: "emergencyContactName") as? String {
         print("calling \(emergencyName)")
@@ -76,7 +76,6 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
       }
       
         open(scheme: "telprompt://\(formatedNumber)")
-
     }
 
     @IBAction func cancelButtonPressed(_ sender: AnyObject) {
@@ -183,7 +182,8 @@ extension ViewController {
                     /* initially nil date since we have not set the start of recording */
                     if timeAtPress != nil{
                         endTimer()
-                    }
+                      self.notifyButtonPressed()
+                  }
                     startTimer()
                 }
             }
@@ -234,8 +234,8 @@ extension ViewController {
             self.navigationItem.title = "Everything will be okay..."
             self.isDataCollected = false
             self.cancelButton.isHidden = false
-            self.notifyButton.isHidden = false
-            
+            //self.notifyButton.isHidden = false
+
             self.cancelButton.fadeOut()
             self.cancelButton.fadeIn()
             
