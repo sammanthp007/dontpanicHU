@@ -1,4 +1,4 @@
-# Panic Attack Identifier
+# Serene
 
 ## What is a Panic Attack?
 A panic attack is a severe attack of anxiety and fear which occurs suddenly, often without warning, and for no apparent reason.
